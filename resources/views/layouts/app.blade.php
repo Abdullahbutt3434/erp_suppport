@@ -12,6 +12,7 @@
 
    @include('layouts.header')
 
+
     <div class="main_content_iner overly_inner ">
         <div class="container-fluid p-0 ">
 
@@ -34,8 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row ">
-            </div>
+            @yield('content')
         </div>
     </div>
 
