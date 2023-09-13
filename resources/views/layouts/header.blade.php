@@ -40,7 +40,7 @@
                             <div class="profile_info_details">
                                 <a href="#">My Profile </a>
                                 <a href="#">Settings</a>
-                                <a href="#">Log Out </a>
+                                <a href="{{route('user.logout')}}">Log Out </a>
                             </div>
                         </div>
                     </div>
