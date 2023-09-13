@@ -2,9 +2,9 @@
 
 namespace Database\Seeders\User;
 
+use App\Domain\User\Entities\Authorization\Permission;
+use App\Domain\User\Entities\Authorization\Role;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 /**
  *
