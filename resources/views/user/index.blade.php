@@ -9,7 +9,9 @@
                         <div class="white_box_tittle list_header">
                             <h4>User List </h4>
                             <div class="d-flex">
-                                <a href="{{route('user.create')}}" class="btn_1">Add User</a>
+                                @can(\App\Domain\User\Enum\UserPermission::CREATE_USER->value)
+                                    <a href="{{route('user.create')}}" class="btn_1">Add User</a>
+                                @endcan
                             </div>
 {{--                            <div class="box_right d-flex lms_block">--}}
 {{--                                <div class="serach_field_2">--}}
@@ -36,7 +38,10 @@
                                     <th scope="col">Email Address</th>
                                     <th scope="col">Role</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    @can(\App\Domain\User\Enum\UserPermission::CREATE_USER->value)
+                                        <th scope="col">Action</th>
+                                    @endcan
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,14 +50,17 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->roles[0]->name}}</td>
-                                        <td><a href="#" class="status_btn  {{$user->status === \App\Domain\User\Enum\UserStatus::INACTIVE->value}}">{{$user->status}}</a></td>
-                                        <td>
-                                            <div class="action_btns d-flex">
-                                                <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i>
-                                                </a>
-                                                <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                            </div>
-                                        </td>
+                                        <td><a href="#" class="status_btn  {{$user->status === \App\Domain\User\Enum\UserStatus::INACTIVE->value ? 'bg-danger':''}}">{{$user->status}}</a></td>
+
+                                        @can(\App\Domain\User\Enum\UserPermission::CREATE_USER->value)
+                                            <td>
+                                                <div class="action_btns d-flex">
+                                                    <a href="{{route('user.edit',$user->id)}}" class="action_btn mr_10"> <i class="far fa-edit"></i>
+                                                    </a>
+                                                    <a href="{{route('user.destroy',$user->id)}}" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                                </div>
+                                            </td>
+                                        @endcan
                                     </tr>
                                 @endforeach
                                 </tbody>

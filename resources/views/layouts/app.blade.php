@@ -10,7 +10,7 @@
 
 <section class="main_content dashboard_part large_header_bg">
 
-   @include('layouts.header')
+    @include('layouts.header')
 
 
     <div class="main_content_iner overly_inner ">
@@ -39,9 +39,52 @@
         </div>
     </div>
 
-   @include('layouts.footer')
-</section>
+    @include('layouts.footer')
+    {{--modals --}}
+    @include('utils.chat-modal')
 
+    {{--end modals--}}
+    @include('layouts.scripts')
+    @yield('scripts')
+    <script>
+        @if(Session::has('message'))
+        $.toast({
+            heading: 'Information',
+            text: '{{  session('message') }}',
+            icon: 'info',
+            loader: true,
+            position: 'bottom-right',
+            loaderBg: '#9EC600'
+        })
+        @endif
+
+        @if(Session::has('error'))
+        $.toast({
+            heading: 'Information',
+            text: '{{  session('error') }}',
+            icon: 'error',
+            loader: true,
+            position: 'bottom-right',
+            loaderBg: '#9EC600'
+        })
+        @endif
+
+        @if(Session::has('success'))
+        $.toast({
+            heading: 'Information',
+            text: '{{  session('success') }}',
+            icon: 'info',
+            loader: true,
+            position: 'bottom-right',
+            loaderBg: '#9EC600',
+            "positionClass": "toast-bottom-full-width",
+        })
+        @endif
+    </script>
+    {{Session::forget('success')}}
+    {{Session::forget('error')}}
+    {{Session::forget('message')}}
+</section>
 
 
 <div id="back-top" style="display: none;">
@@ -49,12 +92,6 @@
         <i class="ti-angle-up"></i>
     </a>
 </div>
-
-{{--modals --}}
-@include('utils.chat-modal')
-
-{{--end modals--}}
-@include('layouts.scripts')
 </body>
 
 <!-- Mirrored from demo.dashboardpack.com/user-management-html/index_3.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 27 Aug 2023 10:19:07 GMT -->

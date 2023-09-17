@@ -42,8 +42,8 @@
 <script src="{{asset('assets/vendors/scroll/perfect-scrollbar.min.js')}}"></script>
 <script src="{{asset('assets/vendors/scroll/scrollable-custom.js')}}"></script>
 
-<script src="{{asset('assets/vendors/vectormap-home/vectormap-2.0.2.min.js')}}"></script>
-<script src="{{asset('assets/vendors/vectormap-home/vectormap-world-mill-en.js')}}"></script>
+{{--<script src="{{asset('assets/vendors/vectormap-home/vectormap-2.0.2.min.js')}}"></script>--}}
+{{--<script src="{{asset('assets/vendors/vectormap-home/vectormap-world-mill-en.js')}}"></script>--}}
 
 <script src="{{asset('assets/vendors/apex_chart/apex-chart2.js')}}"></script>
 <script src="{{asset('assets/vendors/apex_chart/apex_dashboard.js')}}"></script>
@@ -56,3 +56,10 @@
 
 <script src="{{asset('assets/js/dashboard_init.js')}}"></script>
 <script src="{{asset('assets/js/custom.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    $(document).ready(function(){
+        $("input").attr("autocomplete", "off");
+    });
+</script>

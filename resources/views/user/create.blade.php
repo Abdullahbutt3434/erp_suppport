@@ -13,55 +13,49 @@
                     </div>
                 </div>
                 <div class="white_card_body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="common_input mb_15">
-                                <input type="text" name="name" placeholder="Name">
+                    <form action="{{route('user.store')}}" method="post" autocomplete="off">
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="common_input mb_15">
+                                    <input required type="text" name="name" value="{{ old('name') }}"
+                                           autocomplete="false" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="common_input mb_15">
+                                    <input required type="email" name="email" value="{{ old('email') }}"
+                                           autocomplete="false" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="common_input mb_15">
+                                    <input type="text" name="phone_number" value="{{ old('phone_number') }}"
+                                           autocomplete="off" placeholder="Phone number">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="common_input mb_15">
+                                    <input required type="text" name="password" value="{{ old('password') }}"
+                                           autocomplete="false" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <select required class="nice_Select2 nice_Select_line wide" name="role" style="display: none;">
+                                    <option value="1">Select Role</option>
+                                    @foreach($roles as $role)
+                                        <option value="{{$role->id}}"
+                                                value="{{ old('role') == $role->id ? 'selected':'' }}">{{$role->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="create_report_btn mt_30">
+                                    <button class="btn_1 w-100 radius_btn d-block text-center">Add User</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="common_input mb_15">
-                                <input type="email" name="email" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="common_input mb_15">
-                                <input type="text" name="phone_number" placeholder="Phone number">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="common_input mb_15">
-                                <input type="text" placeholder="Email Address">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="common_input mb_15">
-                                <input type="text" placeholder="Mobile No">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="common_input mb_15">
-                                <input type="text" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="common_input mb_15">
-                                <input type="text" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <select class="nice_Select2 nice_Select_line wide" style="display: none;">
-                                <option value="1">Select Role</option>
-                                <option value="1">Role 1</option>
-                                <option value="1">Role2</option>
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <div class="create_report_btn mt_30">
-                                <a href="#" class="btn_1 radius_btn d-block text-center">Add User</a>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

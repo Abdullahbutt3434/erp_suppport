@@ -3,6 +3,7 @@
 namespace App\Domain\User\Entities;
 
 use App\Domain\User\Contracts\Config;
+use App\Domain\User\Enum\UserStatus;
 use App\Infrastructure\Traits\HasTblPrefix;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -52,4 +53,10 @@ class User extends Authenticatable
     {
         return UserFactory::new();
     }
+
+    public function isActive(): bool
+    {
+        return $this->status === UserStatus::ACTIVE->value;
+    }
+
 }
