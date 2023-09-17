@@ -16,25 +16,10 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        Permission::create(['name' => 'create-admin']);
-        Permission::create(['name' => 'edit-admin']);
-        Permission::create(['name' => 'delete-admin']);
-        Permission::create(['name' => 'view-admin']);
-
-        Permission::create(['name' => 'create-editor']);
-        Permission::create(['name' => 'edit-editor']);
-        Permission::create(['name' => 'delete-editor']);
-        Permission::create(['name' => 'view-editor']);
-
-        Permission::create(['name' => 'create-agent']);
-        Permission::create(['name' => 'edit-agent']);
-        Permission::create(['name' => 'delete-agent']);
-        Permission::create(['name' => 'view-agent']);
-
-        Permission::create(['name' => 'create-supervisor']);
-        Permission::create(['name' => 'edit-supervisor']);
-        Permission::create(['name' => 'delete-supervisor']);
-        Permission::create(['name' => 'view-supervisor']);
+        Permission::create(['name' => 'create-user']);
+        Permission::create(['name' => 'edit-user']);
+        Permission::create(['name' => 'delete-user']);
+        Permission::create(['name' => 'view-user']);
 
 
         $adminRole = Role::create(['name' => 'Admin']);
@@ -44,29 +29,27 @@ class RoleAndPermissionSeeder extends Seeder
 
 
         $adminRole->givePermissionTo([
-            'create-editor',
-            'edit-editor',
-            'delete-editor',
-            'view-editor',
-            'create-agent',
-            'edit-agent',
-            'delete-agent',
-            'view-agent',
-            'create-supervisor',
-            'edit-supervisor',
-            'delete-supervisor',
-            'view-supervisor',
+            'create-user',
+            'edit-user',
+            'delete-user',
+            'view-user',
         ]);
 
         $editorRole->givePermissionTo([
-            'view-agent',
-            'view-supervisor',
+            'view-user',
         ]);
 
+        $agentRole->givePermissionTo([
+            'view-user',
+        ]);
+
+        $supervisorRole->givePermissionTo([
+            'view-user',
+        ]);
+
+
         $editorRole->givePermissionTo([
-            'view-editor',
-            'view-supervisor',
-            'view-agent',
+            'view-user',
         ]);
     }
 }

@@ -37,4 +37,5 @@
 
     <link rel="stylesheet" href="{{asset('assets/css/style1.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/colors/default.css" id="colorSkinCSS')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
